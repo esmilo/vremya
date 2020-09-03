@@ -1,31 +1,43 @@
-const vremya = {
+const v = {
   getCurrentDate() {
     const dateObject = new Date();
     const yyyy = dateObject.getFullYear();
     let mm = dateObject.getMonth() + 1;
-    mm = mm < 10 ? '0' + mm : String(mm);
+    mm = v.zeroPrefixer(mm);
 
     let dd = dateObject.getDate();
-    dd = dd < 10 ? '0' + dd : String(dd);
+    dd = v.zeroPrefixer(dd);
 
     return `${yyyy}-${mm}-${dd}`;
+  },
+  zeroPrefixer(n) {
+    return n < 10 ? '0' + n : String(n);
+  },
+  getTimestamp(date) {
+    return new Date(date + ' GMT').getTime();
   },
   isDate(x) {
     return {
       after(y) {
-        const timestampX = new Date(x + ' GMT').getTime();
-        const timestampY = new Date(y + ' GMT').getTime();
-
-        return timestampX > timestampY;
+        return v.getTimestamp(x) > v.getTimestamp(y);
       },
       afterOrEqual(y) {
-        const timestampX = new Date(x + ' GMT').getTime();
-        const timestampY = new Date(y + ' GMT').getTime();
-
-        return timestampX >= timestampY;
+        return v.getTimestamp(x) >= v.getTimestamp(y);
+      },
+      before(y) {
+        return v.getTimestamp(x) < v.getTimestamp(y);
+      },
+      beforeOrEqual(y) {
+        return v.getTimestamp(x) <= v.getTimestamp(y);
+      },
+      equal(y) {
+        return v.getTimestamp(x) === v.getTimestamp(y);
+      },
+      today() {
+        return x === v.getCurrentDate();
       },
     };
   },
 };
 
-module.exports = vremya;
+module.exports = v;
