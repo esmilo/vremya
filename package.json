@@ -1,5 +1,5 @@
 {
-  "name": "vremya",
+  "name": "@esmilo/vremya",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -18,5 +18,9 @@
   "homepage": "https://github.com/esmilo/vremya#readme",
   "devDependencies": {
     "jest": "^26.4.2"
-  }
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {}
 }
