@@ -1,6 +1,5 @@
 const { isDate, getCurrentDate } = require('../index.js');
 
-
 const dateObject = new Date();
 const yyyy = dateObject.getFullYear();
 let mm = dateObject.getMonth() + 1;
