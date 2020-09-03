@@ -6,7 +6,8 @@ dates in JavaScript. When you try to compare dates, like for example:
 
 It may sound simple, but **it's not**. Take a look at this example:
 ```javascript
-// Let's say your local current date/time is "September 3rd, 2020. 01:23 GMT+7"
+// Let's say your local current date/time is:
+// "September 3rd, 2020. 01:23 GMT+7"
 
 // Question: Is the date "September 3rd, 2020" today?
 // Expected answer: true
