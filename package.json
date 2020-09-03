@@ -1,6 +1,6 @@
 {
   "name": "@esmilo/vremya",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,12 @@
   "directories": {
     "test": "tests"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "keywords": [
+    "vremya",
+    "vremyajs",
+    "vremya.js",
+    "date",
+    "compare date"
+  ]
 }
