@@ -1,11 +1,15 @@
-const currentDateObject = new Date();
-const currentDateISOString = new Date(
-  `${currentDateObject.getFullYear()}-${currentDateObject.getMonth()}-${currentDateObject.getDate()} GMT`
-).toISOString();
-const currentDate = currentDateISOString.slice(
-  0,
-  currentDateISOString.indexOf('T')
-);
+const { isDate, getCurrentDate } = require('../index.js');
+
+
+const dateObject = new Date();
+const yyyy = dateObject.getFullYear();
+let mm = dateObject.getMonth() + 1;
+mm = mm < 10 ? '0' + mm : String(mm);
+
+let dd = dateObject.getDate();
+dd = dd < 10 ? '0' + dd : String(dd);
+
+const currentDate = `${yyyy}-${mm}-${dd}`;
 
 describe('after()', function () {
   it("isDate('2020-08-28').after('2020-08-20') should return true", function () {
@@ -65,86 +69,86 @@ describe('getCurrentDate()', function () {
   });
 });
 
-describe('today()', function() {
-  it("isDate(getCurrentDate()).today() should return true", function() {
+describe('today()', function () {
+  it('isDate(getCurrentDate()).today() should return true', function () {
     expect(isDate(getCurrentDate()).today()).toEqual(true);
   });
 });
 
 describe('before()', function () {
-  it('isDate(\'2020-08-28\').before(\'2020-08-29\') should return true', function () {
+  it("isDate('2020-08-28').before('2020-08-29') should return true", function () {
     expect(isDate('2020-08-28').before('2020-08-29')).toEqual(true);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').before(\'2020-09-28\') should return true', function () {
+  it("isDate('2020-08-28').before('2020-09-28') should return true", function () {
     expect(isDate('2020-08-28').before('2020-09-28')).toEqual(true);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').before(\'2021-08-28\') should return true', function () {
+  it("isDate('2020-08-28').before('2021-08-28') should return true", function () {
     expect(isDate('2020-08-28').before('2021-08-28')).toEqual(true);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').before(\'2020-08-27\') should return false', function () {
+  it("isDate('2020-08-28').before('2020-08-27') should return false", function () {
     expect(isDate('2020-08-28').before('2020-08-27')).toEqual(false);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').before(\'2020-07-28\') should return false', function () {
+  it("isDate('2020-08-28').before('2020-07-28') should return false", function () {
     expect(isDate('2020-08-28').before('2020-07-28')).toEqual(false);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').before(\'2012-12-12\') should return false', function () {
+  it("isDate('2020-08-28').before('2012-12-12') should return false", function () {
     expect(isDate('2020-08-28').before('2012-12-12')).toEqual(false);
-  })
-})
+  });
+});
 
 describe('beforeOrEqual()', function () {
-  it('isDate(\'2020-08-28\').beforeOrEqual(\'2020-08-28\') should return true', function () {
+  it("isDate('2020-08-28').beforeOrEqual('2020-08-28') should return true", function () {
     expect(isDate('2020-08-28').beforeOrEqual('2020-08-28')).toEqual(true);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').beforeOrEqual(\'2020-08-29\') should return true', function () {
+  it("isDate('2020-08-28').beforeOrEqual('2020-08-29') should return true", function () {
     expect(isDate('2020-08-28').beforeOrEqual('2020-08-29')).toEqual(true);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').beforeOrEqual(\'2021-01-21\') should return true', function () {
+  it("isDate('2020-08-28').beforeOrEqual('2021-01-21') should return true", function () {
     expect(isDate('2020-08-28').beforeOrEqual('2021-01-21')).toEqual(true);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').beforeOrEqual(\'2020-08-27\') should return false', function () {
+  it("isDate('2020-08-28').beforeOrEqual('2020-08-27') should return false", function () {
     expect(isDate('2020-08-28').beforeOrEqual('2020-08-27')).toEqual(false);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').beforeOrEqual(\'2020-07-28\') should return false', function () {
+  it("isDate('2020-08-28').beforeOrEqual('2020-07-28') should return false", function () {
     expect(isDate('2020-08-28').beforeOrEqual('2020-07-28')).toEqual(false);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').beforeOrEqual(\'2012-12-12\') should return false', function () {
+  it("isDate('2020-08-28').beforeOrEqual('2012-12-12') should return false", function () {
     expect(isDate('2020-08-28').beforeOrEqual('2012-12-12')).toEqual(false);
-  })
-})
+  });
+});
 
-describe('equal()', function() {
-  it('isDate(\'2020-08-28\').equal(\'2020-08-28\') should return true', function () {
+describe('equal()', function () {
+  it("isDate('2020-08-28').equal('2020-08-28') should return true", function () {
     expect(isDate('2020-08-28').equal('2020-08-28')).toEqual(true);
-  })
+  });
 
-  it('isDate(\'2021-01-21\').equal(\'2021-01-21\') should return true', function () {
+  it("isDate('2021-01-21').equal('2021-01-21') should return true", function () {
     expect(isDate('2021-01-21').equal('2021-01-21')).toEqual(true);
-  })
+  });
 
-  it('isDate(\'2012-12-12\').equal(\'2012-12-12\') should return true', function () {
+  it("isDate('2012-12-12').equal('2012-12-12') should return true", function () {
     expect(isDate('2012-12-12').equal('2012-12-12')).toEqual(true);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').equal(\'2020-08-29\') should return false', function () {
+  it("isDate('2020-08-28').equal('2020-08-29') should return false", function () {
     expect(isDate('2020-08-28').equal('2020-08-29')).toEqual(false);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').equal(\'2020-08-27\') should return false', function () {
+  it("isDate('2020-08-28').equal('2020-08-27') should return false", function () {
     expect(isDate('2020-08-28').equal('2020-08-27')).toEqual(false);
-  })
+  });
 
-  it('isDate(\'2020-08-28\').equal(\'2019-08-28\') should return false', function () {
+  it("isDate('2020-08-28').equal('2019-08-28') should return false", function () {
     expect(isDate('2020-08-28').equal('2019-08-28')).toEqual(false);
-  })
-})
+  });
+});
