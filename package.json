@@ -1,0 +1,22 @@
+{
+  "name": "vremya",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esmilo/vremya.git"
+  },
+  "author": "Dimitri Wahyudiputra & Ivan Tjendra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/esmilo/vremya/issues"
+  },
+  "homepage": "https://github.com/esmilo/vremya#readme",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}
