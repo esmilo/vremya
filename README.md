@@ -45,10 +45,9 @@ const { isDate, getCurrentDate } = require('@esmilo/vremya');
 console.log(getCurrentDate()); // '2020-09-03'
 
 // Check if date given is today
-console.log(isDate(getCurrentDate()).equal('2020-09-03')); // true
-// OR
-console.log(isDate(getCurrentDate()).today()); // true
+console.log(isDate('2020-09-03').today()); // true
 
+console.log(isDate(getCurrentDate()).equal('2020-09-03')); // true
 console.log(isDate('2020-08-28').equal('2020-08-28')); // true
 console.log(isDate('2020-08-28').after('2020-08-20')); // true
 console.log(isDate('2021-08-28').before('2020-08-28')); // false
