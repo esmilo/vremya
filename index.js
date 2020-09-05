@@ -14,7 +14,14 @@ const v = {
     return n < 10 ? '0' + n : String(n);
   },
   getTimestamp(date) {
-    return new Date(date + ' GMT').getTime();
+    const timestamp = new Date(date + ' GMT').getTime();
+    if (typeof date !== 'string')
+      throw new Error('Invalid date');
+    
+    if (isNaN(timestamp))
+      throw new Error('Invalid date');
+    
+    return timestamp;
   },
   isDate(x) {
     return {
