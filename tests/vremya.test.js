@@ -1,4 +1,4 @@
-const { isDate, getCurrentDate } = require('../index.js');
+const { isDate, getCurrentDate, zeroPrefixer } = require('../index.js');
 
 const dateObject = new Date();
 const yyyy = dateObject.getFullYear();
@@ -150,4 +150,29 @@ describe('equal()', function () {
   it("isDate('2020-08-28').equal('2019-08-28') should return false", function () {
     expect(isDate('2020-08-28').equal('2019-08-28')).toEqual(false);
   });
+});
+
+describe('Invalid dates', function () {
+  it('isDate().equal() should throw an error', function () {
+    expect(() => isDate().equal()).toThrowError('Invalid date');
+  });
+  it("isDate('foobar').after('foobar') should throw an error", function () {
+    expect(() => isDate('foobar').equal('foobar')).toThrowError('Invalid date');
+  });
+  it('isDate([]).afterOrEqual([]) should throw an error', function () {
+    expect(() => isDate([]).equal([])).toThrowError('Invalid date');
+  });
+  it('isDate(new Date).beforeOrEqual(new Date) should throw an error', function () {
+    expect(() => isDate(new Date()).equal(new Date())).toThrowError(
+      'Invalid date'
+    );
+  });
+  it('isDate(0).today(0) should throw an error', function () {
+    expect(() => isDate(0).equal(0)).toThrowError('Invalid date');
+  });
+});
+
+it('zeroPrefixer', function () {
+  expect(zeroPrefixer(9)).toEqual('09');
+  expect(zeroPrefixer(10)).toEqual('10');
 });

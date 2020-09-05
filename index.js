@@ -15,12 +15,10 @@ const v = {
   },
   getTimestamp(date) {
     const timestamp = new Date(date + ' GMT').getTime();
-    if (typeof date !== 'string')
-      throw new Error('Invalid date');
-    
-    if (isNaN(timestamp))
-      throw new Error('Invalid date');
-    
+    if (typeof date !== 'string') throw new Error('Invalid date');
+
+    if (isNaN(timestamp)) throw new Error('Invalid date');
+
     return timestamp;
   },
   isDate(x) {
