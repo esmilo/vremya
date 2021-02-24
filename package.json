@@ -1,7 +1,7 @@
 {
   "name": "@esmilo/vremya",
-  "version": "1.1.1",
-  "description": "",
+  "version": "1.1.2",
+  "description": "Easy-to-use date comparison utility",
   "main": "index.js",
   "scripts": {
     "test": "npx jest"
